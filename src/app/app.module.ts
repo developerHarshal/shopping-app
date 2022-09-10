@@ -16,7 +16,6 @@ import { ShoppingBagComponent } from './components/shopping-bag/shopping-bag.com
     DashboardComponent,
     AddProductComponent,
     ShoppingBagComponent
-    // AddProductComponent
   ],
   imports: [
     BrowserModule,

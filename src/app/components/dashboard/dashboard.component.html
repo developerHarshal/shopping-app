@@ -18,14 +18,6 @@
     <div class="main">
 
         <h6 *ngIf="productService.productList.length == 0" class="alert alert-warning">No Products Added. <br> Please Add a product by Clicking Buy New Button</h6>
-        <!-- <h1>Fixed Top Menu</h1>
-        <h2>Scroll this page to see the effect</h2>
-        <h2>The navigation bar will stay at the top of the page while scrolling</h2> -->
-
-
-        <!--
-            ___________________________________________________________
-        -->
 
         <div class="row">
             <div  *ngFor="let product of productService.productList; let i=index;" class="col-md-4 mt-2">
@@ -35,7 +27,6 @@
 
                             <img [src]="product.productImageUrl"
                                 class="card-img-top "  alt="">
-                                <!-- width="96" height="20" -->
                         </div>
                     </div>
 
@@ -43,11 +34,7 @@
                         <div class="mb-2">
                             <h6 class="font-weight-semibold mb-2">
                                 {{product.productName}}
-                                <!-- <a href="#" class="text-default mb-2" data-abc="true">Toshiba Notebook with 500GB HDD &
-                                    8GB RAM</a> -->
                             </h6>
-
-                            <!-- <a href="#" class="text-muted" data-abc="true">Laptops & Notebooks</a> -->
                         </div>
 
                         <h3 class="mb-0 font-weight-semibold">${{product.productPrice}}</h3>
@@ -57,7 +44,6 @@
                             <input type="number" class="count" id="qty_{{i}}" name="qty_{{i}}" #qty disabled>
                             <span class="plus bg-dark" (click)="increaseQty(i,product.productId)">+</span>
                         </div>
-                        <!-- <div class="text-muted mb-3">34 reviews</div> -->
                         <button type="button" class="btn bg-cart" (click)="addToBag(product.productId,product.productName,product.productPrice, +qty.value)"> Add to Bag</button>
                     </div>
                 </div>
@@ -67,8 +53,5 @@
         <div class="mt-5">
         <app-shopping-bag></app-shopping-bag>
     </div>
-        <!--
-            ___________________________________________________________
-        -->
     </div>
 </div>

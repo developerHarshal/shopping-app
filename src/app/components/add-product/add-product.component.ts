@@ -28,7 +28,6 @@ export class AddProductComponent implements OnInit {
     this.productForm = new FormGroup({
       productName: new FormControl('',Validators.required),
       productPrice: new FormControl('',[Validators.required, Validators.pattern("^[0-9]*$")]),
-      // productImage: new FormControl(''),
     });
   }
 
@@ -52,7 +51,6 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.productForm.value);
     const product = this.mapToProduct();
     this.productService.addProduct(product);
     this.router.navigate(['./dashboard']);
@@ -61,10 +59,10 @@ export class AddProductComponent implements OnInit {
   onFileSelected(event) {
     this.fileTouched = true;
     this.selectedFile = event.target.files[0];
-    console.log(event);
+
     if(this.selectedFile){
       this.fileNotSelectedError = false;
-      console.log(this.selectedFile);
+
       const reader = new FileReader();
       reader.readAsDataURL(this.selectedFile);
       reader.onload = (event:any)=> {

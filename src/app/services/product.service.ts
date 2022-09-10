@@ -14,11 +14,9 @@ export class ProductService {
 
   addProduct(product: Product) {
     this.productList.push(product);
-    console.log('productList',this.productList);
   }
 
   addProductToBag(productId:number,productName:string,productPrice:number, qty:number) {
-    // this.bagItems.push(bagItem);
     let bagItem = this.bagItems.find(item => item.productId === productId);
     if(bagItem){
       bagItem.productQty = qty;

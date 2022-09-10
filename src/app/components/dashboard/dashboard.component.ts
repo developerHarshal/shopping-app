@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-// import { BagItem } from 'src/app/shared/models/bagItem.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +15,6 @@ export class DashboardComponent implements OnInit {
   }
 
   addToBag(productId:number,productName:string,productPrice:number, qty:number){
-    // console.log(productId,productName,productPrice,qty);
     this.productService.addProductToBag(productId,productName,productPrice,qty);
   }
 
