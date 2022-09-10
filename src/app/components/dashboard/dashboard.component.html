@@ -1,0 +1,74 @@
+<div class="content">
+
+    <div class="m-4">
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <button class="nav-item nav-link btn btn-danger" routerLink="/buyNow"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                          </svg> Buy Now </button>
+                        
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="main">
+
+        <h6 *ngIf="productService.productList.length == 0" class="alert alert-warning">No Products Added. <br> Please Add a product by Clicking Buy New Button</h6>
+        <!-- <h1>Fixed Top Menu</h1>
+        <h2>Scroll this page to see the effect</h2>
+        <h2>The navigation bar will stay at the top of the page while scrolling</h2> -->
+
+
+        <!--
+            ___________________________________________________________
+        -->
+
+        <div class="row">
+            <div  *ngFor="let product of productService.productList; let i=index;" class="col-md-4 mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-img-actions">
+
+                            <img [src]="product.productImageUrl"
+                                class="card-img-top "  alt="">
+                                <!-- width="96" height="20" -->
+                        </div>
+                    </div>
+
+                    <div class="card-body bg-light text-center">
+                        <div class="mb-2">
+                            <h6 class="font-weight-semibold mb-2">
+                                {{product.productName}}
+                                <!-- <a href="#" class="text-default mb-2" data-abc="true">Toshiba Notebook with 500GB HDD &
+                                    8GB RAM</a> -->
+                            </h6>
+
+                            <!-- <a href="#" class="text-muted" data-abc="true">Laptops & Notebooks</a> -->
+                        </div>
+
+                        <h3 class="mb-0 font-weight-semibold">${{product.productPrice}}</h3>
+                        
+                        <div class="qty mt-2">
+                            <span class="minus bg-dark" (click)="reduceQty(i,product.productId)">-</span>
+                            <input type="number" class="count" id="qty_{{i}}" name="qty_{{i}}" #qty disabled>
+                            <span class="plus bg-dark" (click)="increaseQty(i,product.productId)">+</span>
+                        </div>
+                        <!-- <div class="text-muted mb-3">34 reviews</div> -->
+                        <button type="button" class="btn bg-cart" (click)="addToBag(product.productId,product.productName,product.productPrice, +qty.value)"> Add to Bag</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5">
+        <app-shopping-bag></app-shopping-bag>
+    </div>
+        <!--
+            ___________________________________________________________
+        -->
+    </div>
+</div>

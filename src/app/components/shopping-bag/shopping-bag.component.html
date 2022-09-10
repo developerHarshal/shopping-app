@@ -1,0 +1,27 @@
+<h2>My Shopping Bag</h2>
+<h6 *ngIf="productService.bagItems.length == 0" class="alert alert-warning">No Items In Shopping Bag. <br> Please Add to bag From Above Items</h6>
+<table *ngIf="productService.bagItems.length > 0" class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Product Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price Details</th>
+        <th scope="col">Order Total</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bagItem of productService.bagItems">
+        <th scope="row">{{bagItem.productName}}</th>
+        <td>{{bagItem.productQty}}</td>
+        <td>{{bagItem.productPrice}}</td>
+        <td>{{bagItem.totalPrice}}</td>
+        <td><button type="button" class="btn-close" aria-label="Close" (click)="productService.removeFromBag(bagItem.productId)"></button></td>
+      </tr>
+      <tr>
+        <!-- <th scope="row">3</th> -->
+        <td colspan="3">Total:</td>
+        <td>{{productService.getOrderTotal()}}</td>
+      </tr>
+    </tbody>
+  </table>
